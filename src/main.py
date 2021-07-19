@@ -11,6 +11,7 @@ $ main.py -v main.py
 import argparse
 
 import report
+from ignore import gitignore
 
 # logging.basicConfig(level=logging.DEBUG)
 
@@ -27,6 +28,7 @@ def main():
 
     args = parser.parse_args()
 
+    gitignore.init(args.path)
     report.Reporter(args.verbose).report(args.path)
 
 if __name__ == '__main__':

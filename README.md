@@ -6,6 +6,11 @@ It is designed to be easily extensible:
 
 It is still WIP.
 
+# Features
+
+Ignores files matching .gitignore.
+Ignores files matching a given blacklist (such as LICENSE, README.md etc...)
+
 # Why
 
 I initiated this as I was reviewing a third party repo with almost no comments,

@@ -3,6 +3,8 @@ import re
 
 from stats import Analytics
 from lang.python import TYPE_OF_LINE
+from ignore import blacklist
+from ignore import gitignore
 
 class bcolors:
     HEADER = '\033[95m'
@@ -17,6 +19,7 @@ class bcolors:
     ENDC = '\033[00m'
     BOLD = '\033[01m'
     UNDERLINE = '\033[04m'
+
 
 
 def display(items):
@@ -40,10 +43,9 @@ def display(items):
               +("{:<30}"+":{:>10}"*len(v)).format(k, *v.values())
               + bcolors.ENDC)
 
+@gitignore.ignore
+@blacklist.ignore
 def display_file(path, what="LOC"):
-    
-    if os.path.isdir(path) and  re.search("/_", path):
-        return
 
     if os.path.isfile(path):
         analytics = Analytics.create(path)
@@ -70,9 +72,9 @@ def display_header():
          +("{:<30}"+"{:>10}"*len(what)).format("path", *what)
          +bcolors.ENDC)
 
+@gitignore.ignore
+@blacklist.ignore
 def display_all(path):
-    if os.path.isdir(path) and  re.search("/_", path):
-        return
 
     # LOC, COMMENT, ...
     what = TYPE_OF_LINE.keys()
