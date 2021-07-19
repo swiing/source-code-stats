@@ -22,6 +22,8 @@ usage: main.py [-h] [-v] path
 ```
 
 For instance, it can provide stats about its own source code:
+
 ```bash
-src/main.py .
+src/main.py src/
 ```
+![screenshot](./assets/screenshot.png)
